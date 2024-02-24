@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:text="原始值"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="百分比"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="最大值"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="生成值"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="俯仰,绕X轴角度"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvPitch1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="180°" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:inputType="numberSigned"
+            android:id="@+id/edtPitchPercent"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="100" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:inputType="numberSigned"
+            android:id="@+id/edtPitchMax"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="100" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvPitch2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+            tools:text="0°" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="横滚,绕Y轴角度"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvRoll1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="0°" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:inputType="numberSigned"
+            android:id="@+id/edtRollPercent"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="100" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:inputType="numberSigned"
+            android:id="@+id/edtRollMax"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="100" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvRoll2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+            tools:text="0°" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="偏航,绕Z轴角度"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvYaw1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="0°" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:inputType="numberSigned"
+            android:id="@+id/edtYawPercent"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="100" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:inputType="numberSigned"
+            android:id="@+id/edtYawMax"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="100" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvYaw2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+            tools:text="0°" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="横移,X轴加速度"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvSway1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="0" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:inputType="numberSigned"
+            android:id="@+id/edtSwayPercent"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="100" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:inputType="numberSigned"
+            android:id="@+id/edtSwayMax"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="100" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvSway2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+            tools:text="0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="纵移,Y轴加速度"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvSurge1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="0" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:inputType="numberSigned"
+            android:id="@+id/edtSurgePercent"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="100" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:inputType="numberSigned"
+            android:id="@+id/edtSurgeMax"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="100" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvSurge2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+            tools:text="0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="升降,Z轴加速度"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvHeave1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="0" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:inputType="numberSigned"
+            android:id="@+id/edtHeavePercent"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="100" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <EditText
+            android:inputType="numberSigned"
+            android:id="@+id/edtHeaveMax"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="100" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvHeave2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+            tools:text="0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="座椅方位角"
+            android:textSize="13sp" />
+
+        <EditText
+            android:inputType="numberSigned"
+            android:id="@+id/edtSeatYaw"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            tools:text="90" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_login"
+        android:text="开始发送"
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/axis_device"
+        android:adjustViewBounds="true"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
