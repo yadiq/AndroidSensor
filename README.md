@@ -1,4 +1,4 @@
-# AndroidDemo
+# AndroidSensor
 Android系统传感器的使用
 
 ## 说明文档

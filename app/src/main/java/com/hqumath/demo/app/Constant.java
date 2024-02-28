@@ -30,8 +30,6 @@ public class Constant {
     public final static String SurgeMax = "SurgeMax";
     public final static String HeaveMax = "HeaveMax";
 
-    public final static String SeatYaw = "SeatYaw";//座椅偏航角
-
     /////////////////////////////////////LiveEventBus/////////////////////////////////////
 
 

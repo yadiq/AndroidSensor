@@ -76,7 +76,6 @@ public class MainActivity extends BaseActivity {
         binding.edtSwayMax.addTextChangedListener(new MyTextWatcher(Constant.SwayMax));
         binding.edtSurgeMax.addTextChangedListener(new MyTextWatcher(Constant.SurgeMax));
         binding.edtHeaveMax.addTextChangedListener(new MyTextWatcher(Constant.HeaveMax));
-        binding.edtSeatYaw.addTextChangedListener(new MyTextWatcher(Constant.SeatYaw));
     }
 
     @Override
@@ -131,7 +130,6 @@ public class MainActivity extends BaseActivity {
         binding.edtSwayMax.setText(sp.getInt(Constant.SwayMax, 10) + "");
         binding.edtSurgeMax.setText(sp.getInt(Constant.SurgeMax, 10) + "");
         binding.edtHeaveMax.setText(sp.getInt(Constant.HeaveMax, 10) + "");
-        binding.edtSeatYaw.setText(sp.getInt(Constant.SeatYaw, 90) + "");
     }
 
     @Override
@@ -226,6 +224,18 @@ public class MainActivity extends BaseActivity {
      * 显示六轴数据
      */
     private void dealData() {
+//        //坐标系为右手直角坐标系。模块正面朝上，向右为X轴，向上为Y轴，垂直模块向外为Z轴。
+//        //旋转的方向按右手法则定义，即右手大拇指指向轴向，四指弯曲的方向即为绕该轴旋转的方向
+//        //安装时X轴为车头方向
+//        String[] data1 = new String(data).split(":");
+//        float roll = Float.parseFloat(data1[1]);//横滚是围绕X轴的角度，取值范围为[-180,180]，单位°，当模组完全水平时为0
+//        float pitch = Float.parseFloat(data1[2]);//俯仰是围绕Y轴的角度，取值范围为[-90,90]，单位°，当模组完全水平时为0
+//        float yaw = Float.parseFloat(data1[3]);//偏航是围绕Z轴的角度，取值范围为[-180,180]，单位°，当X轴指向正北时为0
+//        float surge = Float.parseFloat(data1[4]);//横移是X轴加速度，取值范围为[-16,16]，单位g，当模组完全静止时为0
+//        float sway = Float.parseFloat(data1[5]);//纵移是Y轴加速度，取值范围为[-16,16]，单位g，当模组完全静止时为0
+//        float heave = Float.parseFloat(data1[6]) - 1;//升降是Z轴加速度，取值范围为[-16,16]，单位g，当模组完全静止时为1
+
+
         //欧拉角，单位rad=>°
         //Azimuth yaw偏航角，绕-z轴旋转的角度。值的范围是 -π 到 π。
         //当朝北时，这个角度为0，当朝南时，这个角度为π，当面向东时，该角度为 π/2，当面向西时，该角度为 -π/2。
@@ -258,30 +268,14 @@ public class MainActivity extends BaseActivity {
         int SwayMax = sp.getInt(Constant.SwayMax);
         int SurgeMax = sp.getInt(Constant.SurgeMax);
         int HeaveMax = sp.getInt(Constant.HeaveMax);
-        int SeatYaw = sp.getInt(Constant.SeatYaw);
-
-        //注意座椅偏航角
-        float yaw1 = yaw - SeatYaw;
-        if (yaw1 > 180) {
-            yaw1 = yaw1 - 360;
-        } else if (yaw1 < -180) {
-            yaw1 = yaw1 + 360;
-        }
 
         //百分比和最值，是否反向
         float pitch2 = Math.min(PitchMax, (Math.max(pitch * Math.abs(PitchPercent) / 100, -PitchMax))) * (PitchPercent < 0 ? -1 : 1);
         float roll2 = Math.min(RollMax, (Math.max(roll * Math.abs(RollPercent) / 100, -RollMax))) * (RollPercent < 0 ? -1 : 1);
-        float yaw2 = Math.min(YawMax, (Math.max(yaw1 * Math.abs(YawPercent) / 100, -YawMax))) * (YawPercent < 0 ? -1 : 1);
+        float yaw2 = Math.min(YawMax, (Math.max(yaw * Math.abs(YawPercent) / 100, -YawMax))) * (YawPercent < 0 ? -1 : 1);
         float sway2 = Math.min(SwayMax, (Math.max(sway * Math.abs(SwayPercent) / 100, -SwayMax))) * (SwayPercent < 0 ? -1 : 1);
         float surge2 = Math.min(SurgeMax, (Math.max(surge * Math.abs(SurgePercent) / 100, -SurgeMax))) * (SurgePercent < 0 ? -1 : 1);
         float heave2 = Math.min(HeaveMax, (Math.max(heave * Math.abs(HeavePercent) / 100, -HeaveMax))) * (HeavePercent < 0 ? -1 : 1);
-
-        /*float pitch2 = Math.min(PitchMax, (Math.max(pitch * PitchPercent / 100, -PitchMax)));
-        float roll2 = Math.min(RollMax, (Math.max(roll * RollPercent / 100, -RollMax)));
-        float yaw2 = Math.min(YawMax, (Math.max(yaw * YawPercent / 100, -YawMax)));
-        float sway2 = Math.min(SwayMax, (Math.max(sway * SwayPercent / 100, -SwayMax)));
-        float surge2 = Math.min(SurgeMax, (Math.max(surge * SurgePercent / 100, -SurgeMax)));
-        float heave2 = Math.min(HeaveMax, (Math.max(heave * HeavePercent / 100, -HeaveMax)));*/
 
         //LogUtil.d("X轴加速度:" + String.format("%.2f", sway) + " Y轴加速度:" + String.format("%.2f", surge) + " Z轴加速度:" + String.format("%.2f", heave));
         binding.getRoot().post(() -> {
