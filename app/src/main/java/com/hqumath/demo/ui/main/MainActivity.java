@@ -1,7 +1,6 @@
 package com.hqumath.demo.ui.main;
 
 import android.content.Context;
-import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -15,8 +14,6 @@ import com.hqumath.demo.app.AppExecutors;
 import com.hqumath.demo.app.Constant;
 import com.hqumath.demo.base.BaseActivity;
 import com.hqumath.demo.databinding.ActivityMainBinding;
-import com.hqumath.demo.media.attitude.SeatUDPClient;
-import com.hqumath.demo.ui.repos.MyReposActivity;
 import com.hqumath.demo.utils.CommonUtil;
 import com.hqumath.demo.utils.LogUtil;
 import com.hqumath.demo.utils.SPUtil;
@@ -39,7 +36,6 @@ public class MainActivity extends BaseActivity {
     private Sensor magneticSensor;
     private Sensor linearAccelerationSensor;
     private ScheduledFuture scheduledFuture;//定时任务
-    private SeatUDPClient seatUDPClient;//姿态座椅控制
     private SPUtil sp = SPUtil.getInstance();
 
     private final float[] accelerometerData = new float[3];//加速度计数据
@@ -59,11 +55,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-        binding.btnSend.setOnClickListener(v -> {
-            boolean isSelected = !v.isSelected();
-            binding.btnSend.setText(isSelected ? "停止发送" : "开始发送");
-            v.setSelected(isSelected);
-        });
         binding.edtPitchPercent.addTextChangedListener(new MyTextWatcher(Constant.PitchPercent));
         binding.edtRollPercent.addTextChangedListener(new MyTextWatcher(Constant.RollPercent));
         binding.edtYawPercent.addTextChangedListener(new MyTextWatcher(Constant.YawPercent));
@@ -107,7 +98,6 @@ public class MainActivity extends BaseActivity {
             LogUtil.d("线性加速度计不存在");
         }
 
-        seatUDPClient = new SeatUDPClient();
         initTimer();//定时器
 //        rotationVectorSensor.getMaximumRange();//最大取值范围
 //        rotationVectorSensor.getName();//设备名称
@@ -163,10 +153,6 @@ public class MainActivity extends BaseActivity {
         if (scheduledFuture != null) {
             scheduledFuture.cancel(true);//取消定时任务
             scheduledFuture = null;
-        }
-        if (seatUDPClient != null) {
-            seatUDPClient.close();
-            seatUDPClient = null;
         }
     }
 
@@ -224,18 +210,6 @@ public class MainActivity extends BaseActivity {
      * 显示六轴数据
      */
     private void dealData() {
-//        //坐标系为右手直角坐标系。模块正面朝上，向右为X轴，向上为Y轴，垂直模块向外为Z轴。
-//        //旋转的方向按右手法则定义，即右手大拇指指向轴向，四指弯曲的方向即为绕该轴旋转的方向
-//        //安装时X轴为车头方向
-//        String[] data1 = new String(data).split(":");
-//        float roll = Float.parseFloat(data1[1]);//横滚是围绕X轴的角度，取值范围为[-180,180]，单位°，当模组完全水平时为0
-//        float pitch = Float.parseFloat(data1[2]);//俯仰是围绕Y轴的角度，取值范围为[-90,90]，单位°，当模组完全水平时为0
-//        float yaw = Float.parseFloat(data1[3]);//偏航是围绕Z轴的角度，取值范围为[-180,180]，单位°，当X轴指向正北时为0
-//        float surge = Float.parseFloat(data1[4]);//横移是X轴加速度，取值范围为[-16,16]，单位g，当模组完全静止时为0
-//        float sway = Float.parseFloat(data1[5]);//纵移是Y轴加速度，取值范围为[-16,16]，单位g，当模组完全静止时为0
-//        float heave = Float.parseFloat(data1[6]) - 1;//升降是Z轴加速度，取值范围为[-16,16]，单位g，当模组完全静止时为1
-
-
         //欧拉角，单位rad=>°
         //Azimuth yaw偏航角，绕-z轴旋转的角度。值的范围是 -π 到 π。
         //当朝北时，这个角度为0，当朝南时，这个角度为π，当面向东时，该角度为 π/2，当面向西时，该角度为 -π/2。
@@ -292,9 +266,6 @@ public class MainActivity extends BaseActivity {
             binding.tvSurge2.setText(String.format("%.2f", surge2));
             binding.tvHeave2.setText(String.format("%.2f", heave2));
         });
-        //发送数据
-        if (seatUDPClient != null && binding.btnSend.isSelected())
-            seatUDPClient.sendUdp(roll2, pitch2, yaw2, surge2, sway2, heave2);
     }
 
     private class MyTextWatcher implements TextWatcher {
