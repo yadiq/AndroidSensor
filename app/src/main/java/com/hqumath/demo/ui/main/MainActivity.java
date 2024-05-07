@@ -109,14 +109,14 @@ public class MainActivity extends BaseActivity {
 
         //读取数据
         binding.edtPitchPercent.setText(sp.getInt(Constant.PitchPercent, 100) + "");
-        binding.edtRollPercent.setText(sp.getInt(Constant.RollPercent, -100) + "");
-        binding.edtYawPercent.setText(sp.getInt(Constant.YawPercent, -100) + "");
-        binding.edtSwayPercent.setText(sp.getInt(Constant.SwayPercent, 200) + "");
-        binding.edtSurgePercent.setText(sp.getInt(Constant.SurgePercent, 200) + "");
-        binding.edtHeavePercent.setText(sp.getInt(Constant.HeavePercent, 200) + "");
-        binding.edtPitchMax.setText(sp.getInt(Constant.PitchMax, 60) + "");
-        binding.edtRollMax.setText(sp.getInt(Constant.RollMax, 60) + "");
-        binding.edtYawMax.setText(sp.getInt(Constant.YawMax, 60) + "");
+        binding.edtRollPercent.setText(sp.getInt(Constant.RollPercent, 100) + "");
+        binding.edtYawPercent.setText(sp.getInt(Constant.YawPercent, 100) + "");
+        binding.edtSwayPercent.setText(sp.getInt(Constant.SwayPercent, 100) + "");
+        binding.edtSurgePercent.setText(sp.getInt(Constant.SurgePercent, 100) + "");
+        binding.edtHeavePercent.setText(sp.getInt(Constant.HeavePercent, 100) + "");
+        binding.edtPitchMax.setText(sp.getInt(Constant.PitchMax, 180) + "");
+        binding.edtRollMax.setText(sp.getInt(Constant.RollMax, 180) + "");
+        binding.edtYawMax.setText(sp.getInt(Constant.YawMax, 180) + "");
         binding.edtSwayMax.setText(sp.getInt(Constant.SwayMax, 10) + "");
         binding.edtSurgeMax.setText(sp.getInt(Constant.SurgeMax, 10) + "");
         binding.edtHeaveMax.setText(sp.getInt(Constant.HeaveMax, 10) + "");

@@ -59,7 +59,7 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="俯仰,绕X轴角度"
+            android:text="绕X轴角度"
             android:textSize="13sp" />
 
         <TextView
@@ -117,7 +117,7 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="横滚,绕Y轴角度"
+            android:text="绕Y轴角度"
             android:textSize="13sp" />
 
         <TextView
@@ -175,7 +175,7 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="偏航,绕Z轴角度"
+            android:text="绕Z轴角度"
             android:textSize="13sp" />
 
         <TextView

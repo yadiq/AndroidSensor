@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">六轴座椅工具</string>
+    <string name="app_name">Android传感器</string>
 
     <!--登录界面-->
     <string name="user_name">用户名</string>
